@@ -1,0 +1,38 @@
+# https://docs.docker.com/compose/compose-file/
+version: '3.8'
+
+services:
+  php:
+    image: lehungio/php-fpm:7.4
+    tty: true
+    restart: always
+    container_name: php-me-ssl
+    working_dir: /code
+    volumes:
+      - $PWD:/code
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
+
+  nginx:
+    build: ./docker/build/nginx
+    tty: true
+    restart: always
+    container_name: nginx
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
+    ports:
+      - "443:443"
+    volumes:
+      - $PWD:/code
+      - $PWD/docker/nginx/letsencrypt:/etc/letsencrypt
+    networks:
+      - default
+    depends_on:
+      - php
+    # command: ["wait-for-it.sh", "sample_web1:80", "--", "./wait-for-it.sh", "sample_web2:80"]
