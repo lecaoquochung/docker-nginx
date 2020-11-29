@@ -11,9 +11,10 @@ ADD https://dl.eff.org/certbot-auto /usr/local/bin/certbot-auto
 RUN chmod a+x /usr/local/bin/certbot-auto
 RUN certbot-auto --os-packages-only -n
 
-RUN pwd;ls
 WORKDIR /root/ddnb
-RUN pwd;ls
+
+EXPOSE 80
+EXPOSE 443
 
 COPY docker/build/nginx/entrypoint.sh /usr/local/bin/entrypoint.sh
 RUN chmod +x /usr/local/bin/entrypoint.sh
