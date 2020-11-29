@@ -1,4 +1,4 @@
-![CircleCI](https://img.shields.io/circleci/build/github/ddnb/docker-nginx/master)
+![Docker Cloud Build Status](https://img.shields.io/docker/cloud/build/ddnb/nginx)
 
 # Docker NGINX certbot
 - CLI
