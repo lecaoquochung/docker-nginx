@@ -18,7 +18,8 @@ EXPOSE 443
 
 COPY docker/build/nginx/entrypoint.sh /usr/local/bin/entrypoint.sh
 RUN chmod +x /usr/local/bin/entrypoint.sh
-ENTRYPOINT ["entrypoint.sh"]
+# ENTRYPOINT ["entrypoint.sh"]
+CMD ["nginx", "-g", "daemon off;"]
 
 RUN nginx -V
 RUN certbot-auto --version
