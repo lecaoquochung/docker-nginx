@@ -17,7 +17,7 @@ services:
         max-file: "3"
 
   nginx:
-    build: ./docker/build/nginx
+    build: .
     tty: true
     restart: always
     container_name: nginx
@@ -27,7 +27,7 @@ services:
         max-size: "10m"
         max-file: "3"
     ports:
-      - "443:443"
+      - "8443:443"
     volumes:
       - $PWD:/code
       - $PWD/docker/nginx/letsencrypt:/etc/letsencrypt
