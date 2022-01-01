@@ -1,9 +1,9 @@
-FROM nginx:1.20.1
+FROM nginx:1.20.2
 
-LABEL maintainer="diendannhatban <admin@diendannhatban>"
+LABEL maintainer="diendannhatban <admin@diendannhatban.info>"
 
 RUN apt-get update && apt-get install -y \
-    wget && \
+    wget vim && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
@@ -18,7 +18,7 @@ RUN apt-get update && apt-get install -y \
 # get snap run inside docker container
 # https://github.com/ogra1/snapd-docker
 # RUN apt update && apt install -y \
-#     snapd
+# snapd
 # RUN systemctl unmask snapd.service
 # RUN systemctl enable snapd.service
 # sudo systemctl start snapd.service
@@ -54,3 +54,7 @@ CMD ["nginx", "-g", "daemon off;"]
 
 RUN nginx -V
 RUN certbot --version
+
+# softlinks towards stdout/stderr
+# https://stackoverflow.com/questions/22541333/have-nginx-access-log-and-error-log-log-to-stdout-and-stderr-of-master-process
+# RUN ln -sf /dev/stdout /var/log/nginx/access.log && ln -sf /dev/stderr /var/log/nginx/error.log
