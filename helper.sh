@@ -71,9 +71,12 @@ run_ssh() {
 }
 
 # open test page
+# TODO: update hosts file with test domain nginx.test
+# echo "127.0.0.1  nginx.test" >> /etc/hosts
 run_open() {
 	case $2 in
-		*)  open http://localhost:38086 ;;
+		php) open http://nginx.test:8080/index.php ;;
+		*)  open http://nginx.test:8080/index.html ;;
 	esac
 }
 
