@@ -1,4 +1,4 @@
-FROM nginx:1.20.2
+FROM nginx:1.22.0
 
 LABEL maintainer="diendannhatban <admin@diendannhatban.info>"
 
