@@ -1,3 +1,6 @@
+# Docker build
+# docker build --progress=plain
+# Linux nginx-build 5.10.76-linuxkit #1 SMP Mon Nov 8 10:21:19 UTC 2021 x86_64 GNU/Linux
 FROM nginx:1.22.0
 
 LABEL maintainer="diendannhatban <admin@diendannhatban.info>"
@@ -42,6 +45,9 @@ RUN apt update && apt install -y \
     python3-zope.interface
 RUN apt install python3-certbot-nginx
 
+# install ssh
+RUN apt install -y ssh vim
+
 WORKDIR /root/ddnb
 
 EXPOSE 80
@@ -54,6 +60,8 @@ CMD ["nginx", "-g", "daemon off;"]
 
 RUN nginx -V
 RUN certbot --version
+RUN ssh -V
+RUN vim --version
 
 # softlinks towards stdout/stderr
 # https://stackoverflow.com/questions/22541333/have-nginx-access-log-and-error-log-log-to-stdout-and-stderr-of-master-process
