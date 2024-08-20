@@ -3,7 +3,7 @@
 # Docker NGINX certbot
 - CLI
 ```
-certbot-auto --nginx -d ssl.diendannhatban.info -m admin@diendannhatban.info --agree-tos -n
+certbot-auto --nginx -d domain.TLDs -m email --agree-tos -n
 ```
 
 # Reference

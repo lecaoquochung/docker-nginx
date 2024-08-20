@@ -3,8 +3,6 @@
 # Linux nginx-build 5.10.76-linuxkit #1 SMP Mon Nov 8 10:21:19 UTC 2021 x86_64 GNU/Linux
 FROM nginx:1.24.0
 
-LABEL maintainer="diendannhatban <admin@diendannhatban.info>"
-
 RUN apt-get update && apt-get install -y \
     wget vim && \
     apt-get clean && \
